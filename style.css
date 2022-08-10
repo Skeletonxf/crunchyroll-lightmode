@@ -12,7 +12,8 @@
 .erc-current-media-info,
 .erc-commenting-section,
 .erc-commenting-section h5,
-.current-media-ratings div[role=button] p {
+.current-media-ratings div[role=button] p,
+.erc-current-media-info .show-title-link:focus-within {
   color: #000;
 }
 
@@ -22,25 +23,39 @@
 .erc-current-media-info button[data-t=episode-dislike-button] span,
 .erc-current-media-info button[data-t=episode-dislike-button]:focus-within span,
 .erc-current-media-info button[data-t=episode-like-button] span,
-.erc-current-media-info button[data-t=episode-like-button]:focus-within span {
+.erc-current-media-info button[data-t=episode-like-button]:focus-within span,
+.erc-current-media-info .media-tags span,
+/* This is to match the 'Comment as' text that has no good selectors */
+.erc-commenting-section .create-comment > div:nth-child(2) > div:first-child > span,
+/* This is to match the 'Mark as spoiler' label that has no good selectors */
+.erc-commenting-section .create-comment > div:nth-child(2) > div:nth-child(3) > div:first-child div:first-child label,
+/* This is the popularity button, we have to ensure we don't accidentally style its dropdown menu */
+.erc-commenting-section .comments-header > div > div[role=button] > span {
   color: #666;
 }
 
 .erc-current-media-info button[data-t=episode-dislike-button] svg,
 .erc-current-media-info button[data-t=episode-dislike-button]:focus-within svg,
 .erc-current-media-info button[data-t=episode-like-button] svg,
-.erc-current-media-info button[data-t=episode-like-button]:focus-within svg {
+.erc-current-media-info button[data-t=episode-like-button]:focus-within svg,
+.erc-current-media-info button[data-t=watchlist-toggle] svg[data-t=watchlist-svg] {
   fill: #000;
 }
 
 @media (hover: hover) {
   .erc-current-media-info button[data-t=episode-dislike-button]:hover svg,
-  .erc-current-media-info button[data-t=episode-like-button]:hover svg {
+  .erc-current-media-info button[data-t=episode-like-button]:hover svg,
+  .erc-current-media-info button[data-t=watchlist-toggle]:hover svg,
+  .erc-current-media-info button[data-t=watchlist-toggle]:focus svg,
+  .current-media-ratings div[role=button]:focus svg,
+  .current-media-ratings div[role=button]:hover svg {
     fill: #000;
   }
 
   .erc-current-media-info button[data-t=episode-dislike-button]:hover span,
   .erc-current-media-info button[data-t=episode-like-button]:hover span,
+  .erc-current-media-info .show-title-link:hover,
+  .erc-current-media-info .show-title-link:focus,
   .erc-commenting-section button[data-t=comment-like-btn]:hover,
   .erc-commenting-section button[data-t=comment-like-btn]:focus,
   .erc-commenting-section button[data-t=comment-reply-btn]:hover,
@@ -51,5 +66,20 @@
   .erc-commenting-section button[data-t=toggle-replies-btn]:focus {
     color: #000;
   }
+
+  .erc-commenting-section .comments-header > div > div[role=button]:focus > span,
+  .erc-commenting-section .comments-header > div > div[role=button]:hover > span {
+    color: #fff;
+  }
+}
+
+/*
+   Known issue here, if focus/hover is lost on the button while it's expanded it will still revert back to #666.
+   Since all of the css styles for being expanded or collapsed have postfixes there's not a quick fix. It should
+   be fixable by styling the entire selection dropdown menu to a light mode, as this removes the need for us
+   to know if the list is expanded or not because it'll be the same colors either way.
+*/
+.erc-commenting-section .comments-header > div > div[role=button]:focus-within > span {
+  color: #fff;
 }
 }
