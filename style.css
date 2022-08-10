@@ -1,0 +1,55 @@
+@-moz-document domain("beta.crunchyroll.com") {
+.erc-watch-episode-layout {
+  background-color: #fef7f3;
+}
+
+.erc-watch-more-episodes {
+  background-color: #000;
+  padding: 20px;
+  margin: -20px;
+}
+
+.erc-current-media-info,
+.erc-commenting-section,
+.erc-commenting-section h5,
+.current-media-ratings div[role=button] p {
+  color: #000;
+}
+
+.erc-commenting-section button[data-t=comment-like-btn],
+.erc-commenting-section button[data-t=comment-reply-btn],
+.erc-commenting-section button[data-t=comment-more-btn],
+.erc-current-media-info button[data-t=episode-dislike-button] span,
+.erc-current-media-info button[data-t=episode-dislike-button]:focus-within span,
+.erc-current-media-info button[data-t=episode-like-button] span,
+.erc-current-media-info button[data-t=episode-like-button]:focus-within span {
+  color: #666;
+}
+
+.erc-current-media-info button[data-t=episode-dislike-button] svg,
+.erc-current-media-info button[data-t=episode-dislike-button]:focus-within svg,
+.erc-current-media-info button[data-t=episode-like-button] svg,
+.erc-current-media-info button[data-t=episode-like-button]:focus-within svg {
+  fill: #000;
+}
+
+@media (hover: hover) {
+  .erc-current-media-info button[data-t=episode-dislike-button]:hover svg,
+  .erc-current-media-info button[data-t=episode-like-button]:hover svg {
+    fill: #000;
+  }
+
+  .erc-current-media-info button[data-t=episode-dislike-button]:hover span,
+  .erc-current-media-info button[data-t=episode-like-button]:hover span,
+  .erc-commenting-section button[data-t=comment-like-btn]:hover,
+  .erc-commenting-section button[data-t=comment-like-btn]:focus,
+  .erc-commenting-section button[data-t=comment-reply-btn]:hover,
+  .erc-commenting-section button[data-t=comment-reply-btn]:focus,
+  .erc-commenting-section button[data-t=comment-more-btn]:hover,
+  .erc-commenting-section button[data-t=comment-more-btn]:focus,
+  .erc-commenting-section button[data-t=toggle-replies-btn]:hover,
+  .erc-commenting-section button[data-t=toggle-replies-btn]:focus {
+    color: #000;
+  }
+}
+}
