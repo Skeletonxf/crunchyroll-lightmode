@@ -1,19 +1,49 @@
 @-moz-document domain("beta.crunchyroll.com") {
-.erc-watch-episode-layout {
+/** Light mode CSS for watch pages and series page */
+/* Page background */
+.erc-watch-episode-layout,
+.erc-series {
   background-color: #fef7f3;
 }
 
-.erc-watch-more-episodes {
+/* Cards embedded in our light mode pages that we're keeping in dark mode because restyling the cards themselves is a nightmare */
+.erc-watch-more-episodes,
+.erc-series .up-next-section,
+.erc-series .erc-season-episode-list,
+.erc-series .erc-similar-to {
   background-color: #000;
   padding: 20px;
   margin: -20px;
+}
+
+/* Fix alignment for series pages to remove backgroud color strip we'd get otherwise */
+.erc-series {
+  padding-bottom: 0;
+  margin-bottom: 60px;
+}
+.erc-series .erc-similar-to {
+  margin-top: 40px;
+}
+
+/* Don't stretch the up next section to the full cross axis height */
+.erc-series .up-next-section {
+  align-self: flex-start;
 }
 
 .erc-current-media-info,
 .erc-commenting-section,
 .erc-commenting-section h5,
 .current-media-ratings div[role=button] p,
-.erc-current-media-info .show-title-link:focus-within {
+.erc-current-media-info .show-title-link:focus-within,
+.erc-series .hero-heading-line,
+.erc-series .erc-show-description,
+.erc-series .erc-seasons-select > div[role=button] .season-info,
+.erc-series .erc-seasons-select > div[role=button] > svg[role=img],
+.erc-series .erc-reviews-header,
+.erc-series .erc-reviews,
+.erc-series .erc-reviews h5,
+/* This is to match the reviews helpful/not helpful yes/no buttons that have no good selectors (we can't distinguish between the selected option and the other due to no non suffixed css classes) */
+.erc-series .erc-reviews > div > div > div:nth-child(3) button:disabled {
   color: #000;
 }
 
@@ -30,7 +60,15 @@
 /* This is to match the 'Mark as spoiler' label that has no good selectors */
 .erc-commenting-section .create-comment > div:nth-child(2) > div:nth-child(3) > div:first-child div:first-child label,
 /* This is the popularity button, we have to ensure we don't accidentally style its dropdown menu */
-.erc-commenting-section .comments-header > div > div[role=button] > span {
+.erc-commenting-section .comments-header > div > div[role=button] > span,
+.erc-series .erc-series-tags span,
+.erc-series .erc-show-description button[data-t=expandable-btn],
+.erc-series .erc-ratings.series-ratings span,
+.erc-series .reviews-header-average-rating div[role=button],
+.erc-series .reviews-header-average-rating div[role=button]:focus-within,
+/* This is to match the reviews helpful/not helpful text that has no good selectors */
+.erc-series .erc-reviews > div > div > div:nth-child(3) span,
+.erc-series .erc-reviews svg[role=img] {
   color: #666;
 }
 
@@ -40,6 +78,11 @@
 .erc-current-media-info button[data-t=episode-like-button]:focus-within svg,
 .erc-current-media-info button[data-t=watchlist-toggle] svg[data-t=watchlist-svg] {
   fill: #000;
+}
+
+.erc-series .erc-seasons-select > div[role=button]:focus-within .season-info,
+.erc-series .erc-seasons-select > div[role=button]:focus-within > svg[role=img] {
+  color: #066464;
 }
 
 @media (hover: hover) {
@@ -63,13 +106,28 @@
   .erc-commenting-section button[data-t=comment-more-btn]:hover,
   .erc-commenting-section button[data-t=comment-more-btn]:focus,
   .erc-commenting-section button[data-t=toggle-replies-btn]:hover,
-  .erc-commenting-section button[data-t=toggle-replies-btn]:focus {
+  .erc-commenting-section button[data-t=toggle-replies-btn]:focus,
+  .erc-series .erc-show-description button[data-t=expandable-btn]:focus,
+  .erc-series .erc-show-description button[data-t=expandable-btn]:hover,
+  .erc-series .erc-ratings.series-ratings span:focus,
+  .erc-series .erc-ratings.series-ratings span:hover,
+  .erc-series .erc-ratings.series-ratings button[data-t=average-rating]:focus span,
+  .erc-series .erc-ratings.series-ratings button[data-t=average-rating]:hover span,
+  .erc-series .reviews-header-average-rating div[role=button]:focus,
+  .erc-series .reviews-header-average-rating div[role=button]:hover {
     color: #000;
   }
 
   .erc-commenting-section .comments-header > div > div[role=button]:focus > span,
   .erc-commenting-section .comments-header > div > div[role=button]:hover > span {
     color: #fff;
+  }
+
+  .erc-series .erc-seasons-select > div[role=button]:hover .season-info,
+  .erc-series .erc-seasons-select > div[role=button]:focus .season-info,
+  .erc-series .erc-seasons-select > div[role=button]:hover > svg[role=img],
+  .erc-series .erc-seasons-select > div[role=button]:focus > svg[role=img] {
+    color: #066464;
   }
 }
 
